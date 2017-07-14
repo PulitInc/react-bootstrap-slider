@@ -166,7 +166,11 @@
                 }
 
                 if (this.props.rtl !== undefined && (this.mySlider.rtl !== undefined || this.mySlider.options.rtl !== undefined)) {
+                    var changed = this.props.rtl !== this.mySlider.options.rtl;
                     this.mySlider.setAttribute("rtl", this.props.rtl);
+                    if (changed) {
+                        this.mySlider.refresh();
+                    }
                 }
 
                 this.mySlider.setValue(this.props.value);

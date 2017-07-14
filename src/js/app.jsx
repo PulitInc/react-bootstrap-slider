@@ -58,6 +58,7 @@ class Demo extends React.Component {
 
     this.state = {
       ...this.props,
+        rtl: true,
       currentValue: props.startValue
     };
     delete this.state.startValue;
@@ -73,7 +74,7 @@ class Demo extends React.Component {
       min: 0,
       max: 2000,
       step: 100,
-        rtl: true
+        rtl: false
     });
   }
   render() {
@@ -130,8 +131,7 @@ ReactDOM.render(
             startValue = { 3000 }
             max = { 20000 }
             min = { 1000 }
-            step = { 1000 }
-        rtl = {false}/>
+            step = { 1000 }/>
       </div>
       <div className = "demoWrapper">
       <h3>Vertical Demo</h3>
