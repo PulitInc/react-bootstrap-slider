@@ -165,6 +165,10 @@
                     this.mySlider.setAttribute("step", this.props.step);
                 }
 
+                if (this.props.rtl && (this.mySlider.rtl || this.mySlider.options.rtl !== undefined)) {
+                    this.mySlider.setAttribute("rtl", this.props.rtl);
+                }
+
                 this.mySlider.setValue(this.props.value);
 
                 var sliderEnable = this.props.disabled === "disabled" ? false : true;
@@ -203,6 +207,7 @@
         disabled: _propTypes2.default.string,
         tooltip: _propTypes2.default.string,
         change: _propTypes2.default.func,
+        rtl: _propTypes2.default.bool,
         handleChange: _propTypes2.default.func,
         slideStop: _propTypes2.default.func
     };

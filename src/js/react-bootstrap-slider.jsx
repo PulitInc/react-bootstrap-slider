@@ -75,6 +75,10 @@ export class ReactBootstrapSlider extends React.Component {
             this.mySlider.setAttribute("step", this.props.step);
         }
 
+        if (this.props.rtl && (this.mySlider.rtl || this.mySlider.options.rtl !== undefined)) {
+            this.mySlider.setAttribute("rtl", this.props.rtl);
+        }
+
         this.mySlider.setValue(this.props.value);
 
         var sliderEnable = this.props.disabled === "disabled" ? false : true;
@@ -105,6 +109,7 @@ ReactBootstrapSlider.propTypes = {
     disabled: PropTypes.string,
     tooltip: PropTypes.string,
     change: PropTypes.func,
+    rtl: PropTypes.bool,
     handleChange: PropTypes.func,
     slideStop: PropTypes.func
 };

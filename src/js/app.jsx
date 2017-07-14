@@ -72,7 +72,8 @@ class Demo extends React.Component {
       currentValue: 500,
       min: 0,
       max: 2000,
-      step: 100
+      step: 100,
+        rtl: true
     });
   }
   render() {
@@ -129,7 +130,8 @@ ReactDOM.render(
             startValue = { 3000 }
             max = { 20000 }
             min = { 1000 }
-            step = { 1000 } />
+            step = { 1000 }
+        rtl = {false}/>
       </div>
       <div className = "demoWrapper">
       <h3>Vertical Demo</h3>
