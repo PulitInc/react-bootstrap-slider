@@ -28,7 +28,6 @@ export class ReactBootstrapSlider extends React.Component {
     }
 
     componentDidMount() {
-        var that = this;
         var sliderAttributes = {
             ...this.props,
             "tooltip": this.props.tooltip || "show"
@@ -38,6 +37,15 @@ export class ReactBootstrapSlider extends React.Component {
         this.mySlider = new Slider(this.node, sliderAttributes);
 
    //     this.updateSliderValues();
+        this.registerChangeEvent();
+    }
+
+    componentDidUpdate() {
+        this.updateSliderValues();
+    }
+
+    registerChangeEvent() {
+        var that = this;
         if (this.props.change || this.props.handleChange) {
             var changeEvent = this.props.change || this.props.handleChange;
             this.mySlider.on("change", function(e) {
@@ -60,10 +68,6 @@ export class ReactBootstrapSlider extends React.Component {
         }
     }
 
-    componentDidUpdate() {
-        this.updateSliderValues();
-    }
-
     updateSliderValues() {
         if (this.props.min && (this.mySlider.min || this.mySlider.options.min)) {
             this.mySlider.setAttribute("min", this.props.min);
@@ -80,6 +84,7 @@ export class ReactBootstrapSlider extends React.Component {
             this.mySlider.setAttribute("rtl", this.props.rtl);
             if(changed) {
                 this.mySlider.refresh();
+                this.registerChangeEvent();
             }
         }
 

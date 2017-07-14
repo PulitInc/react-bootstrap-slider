@@ -117,7 +117,6 @@
         _createClass(ReactBootstrapSlider, [{
             key: "componentDidMount",
             value: function componentDidMount() {
-                var that = this;
                 var sliderAttributes = _extends({}, this.props, {
                     "tooltip": this.props.tooltip || "show"
                 });
@@ -126,6 +125,17 @@
                 this.mySlider = new _bootstrapSlider2.default(this.node, sliderAttributes);
 
                 //     this.updateSliderValues();
+                this.registerChangeEvent();
+            }
+        }, {
+            key: "componentDidUpdate",
+            value: function componentDidUpdate() {
+                this.updateSliderValues();
+            }
+        }, {
+            key: "registerChangeEvent",
+            value: function registerChangeEvent() {
+                var that = this;
                 if (this.props.change || this.props.handleChange) {
                     var changeEvent = this.props.change || this.props.handleChange;
                     this.mySlider.on("change", function (e) {
@@ -148,11 +158,6 @@
                 }
             }
         }, {
-            key: "componentDidUpdate",
-            value: function componentDidUpdate() {
-                this.updateSliderValues();
-            }
-        }, {
             key: "updateSliderValues",
             value: function updateSliderValues() {
                 if (this.props.min && (this.mySlider.min || this.mySlider.options.min)) {
@@ -170,6 +175,7 @@
                     this.mySlider.setAttribute("rtl", this.props.rtl);
                     if (changed) {
                         this.mySlider.refresh();
+                        this.registerChangeEvent();
                     }
                 }
 
