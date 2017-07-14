@@ -75,7 +75,7 @@ export class ReactBootstrapSlider extends React.Component {
             this.mySlider.setAttribute("step", this.props.step);
         }
 
-        if (this.props.rtl && (this.mySlider.rtl || this.mySlider.options.rtl !== undefined)) {
+        if (this.props.rtl !== undefined && (this.mySlider.rtl !== undefined || this.mySlider.options.rtl !== undefined)) {
             this.mySlider.setAttribute("rtl", this.props.rtl);
         }
 
